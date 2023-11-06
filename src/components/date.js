@@ -1,10 +1,7 @@
-import { parseISO, format } from 'date-fns';
-
+import moment from "moment/moment";
 export default function Date({ dateString }) {
-    const date = parseISO(dateString);
-    return (
-        <time dateTime={dateString}> {format(date, 'yyyy-M-d HH:mm')} </time>
-    )
+    const parsedDate = moment(dateString).format("YYYY-MM-DD hh:mm A");
+    return <time dateTime={dateString}> {parsedDate}</time>;
 }
 
 

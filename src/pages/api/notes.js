@@ -13,9 +13,11 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const noteName = req.body.note_name;
     const noteContent = req.body.note_content;
+    const noteTime = req.body.note_time;
     const addNotes = await query({
-      query: "INSERT INTO notes (note_name, note_content) VALUES (?, ?)",
-      values: [noteName, noteContent],
+      query:
+        "INSERT INTO notes (note_time, note_name, note_content) VALUES (?, ?, ?)",
+      values: [noteTime, noteName, noteContent],
     });
     if (addNotes.insertId) {
       warning = "success";
@@ -25,7 +27,7 @@ export default async function handler(req, res) {
     let note = {
       note_id: addNotes.insertId,
       note_name: noteName,
-      note_content: noteContent
+      note_content: noteContent,
     };
     res.status(200).json({ response: { warning: warning, note: note } });
   }
