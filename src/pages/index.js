@@ -67,7 +67,7 @@ export default function Home() {
         <title>message board</title>
       </Head>
       <main>
-        <section id="worship" className="container">
+        <section className="container">
             <div className="msgboard-container container">
               <ul className="msgboard">
                 {notes.slice(0).reverse().map((item, index) => {
