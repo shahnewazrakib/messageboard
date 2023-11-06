@@ -13,12 +13,12 @@ export default function Document() {
           <div className="big"></div>
         </div>
         <Main />
-        <div id="sound">       
+        {/* <div id="sound">       
           <audio src="./20160814_service_SICCC.mp3" controls autoPlay loop /> 
         </div>
         <div id="sound-desc">
           <p><small>2016年8月14日, 史德頓島華人基督教會</small></p>   
-        </div>
+        </div> */}
         <NextScript />
       </body>
     </Html>

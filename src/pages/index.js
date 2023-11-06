@@ -31,7 +31,6 @@ export default function Home() {
   async function addNote() {
     const noteName = noteNameRef.current.value.trim();
     const noteContent = noteContentRef.current.value.trim();
-    const noteTime = new Date().toString();
     const postData = {
       method: "POST",
       headers: {
@@ -51,11 +50,11 @@ export default function Home() {
     const response = await res.json();
     if (response.response.warning !== "success") return;
     const newnote = response.response.note;
+
     setNotes([
       ...notes,
       {
         note_id: newnote.note_id,
-        note_time: noteTime,
         note_name: newnote.note_name,
         note_content: newnote.note_content
       },
@@ -83,11 +82,10 @@ export default function Home() {
            <h3>祭文悼词</h3>
             <div className="msgboard-container container">
               <ul className="msgboard">
-                {notes.map((item, index) => {
+                {notes.slice(0).reverse().map((item, index) => {
                   return (
                     <li key={item.note_id}>
-                      <p>&#x1f56f;{item.note_time}<br/>
-                      {/* <p>&#x1f56f; <Date dateString={item.note_time} /><br/> */}
+                      <p>&#x1f56f; <Date dateString={item.note_time} /><br/>
                       <span>{item.note_name}{": "} </span>
                       {item.note_content}</p>
                     </li>
