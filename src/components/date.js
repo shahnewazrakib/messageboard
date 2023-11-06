@@ -3,6 +3,6 @@ import { parseISO, format } from 'date-fns';
 export default function Date({ dateString }) {
     const date = parseISO(dateString);
     return (
-        <time dateTime={dateString}> {format(date, 'yyyy年M月d日 h:m a..aa')} </time>
+        <time dateTime={dateString}> {format(date, 'yyyy年M月d日 HH:mm')} </time>
     )
 }
