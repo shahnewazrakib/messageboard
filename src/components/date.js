@@ -1,8 +1,8 @@
-import { parseJSON, format } from 'date-fns';
+import { parseISO, format } from 'date-fns';
 
 export default function Date({ dateString }) {
-    const date = parseJSON(dateString);
+    const date = parseISO(dateString);
     return (
-        <time dateTime={dateString}> {format(date, 'yyyy年M月d日 H:m')} </time>
+        <time dateTime={dateString}> {format(date, 'yyyy年M月d日 h:m a..aa')} </time>
     )
 }
