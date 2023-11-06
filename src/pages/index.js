@@ -2,11 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { CiTrash } from "react-icons/ci";
 import Head from "next/head";
 import Date from "@/components/date"
-import FamilySection from "@/components/families"
-import NainaiSection from "@/components/nainai"
-import SlideshowSection from "@/components/slideshow"
-import PsalmSection from "@/components/psalm"
-
 export default function Home() {
   const noteNameRef = useRef();
   const noteContentRef = useRef();
@@ -69,17 +64,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>&#x1f56f; 缅怀先慈龚云香 &#x1f56f;</title>
+        <title>message board</title>
       </Head>
       <main>
-        <NainaiSection />
-        <SlideshowSection />
-        <PsalmSection />
-        <nav>
-
-        </nav>
         <section id="worship" className="container">
-           <h3>祭文悼词</h3>
             <div className="msgboard-container container">
               <ul className="msgboard">
                 {notes.slice(0).reverse().map((item, index) => {
@@ -94,24 +82,23 @@ export default function Home() {
               </ul>
            </div>
               <div className="input">
-                <div className="label">签名</div>
+                <div className="label">Name</div>
                 <input type="text" ref={noteNameRef} />
               </div>
               <div className="input">
-                <div className="label">留言</div>
+                <div className="label">Message</div>
                 <textarea ref={noteContentRef}></textarea>
               </div>
-              {created ? <div className="success">留言已发布</div> : null}
+              {created ? <div className="success">message published!</div> : null}
               <div className="buttonarea">
                 <input
                   className="button"
-                  value="发布"
+                  value="publish"
                   type="button"
                   onClick={addNote}
                 />
               </div>
         </section>
-        <FamilySection />
       </main>
     </>
   );
